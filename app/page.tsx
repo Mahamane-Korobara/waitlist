@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "next/image";
 
+import { AnalyticsTracker } from "@/components/analytics-tracker";
+import { CtaLink } from "@/components/cta-link";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { siteName, siteUrl } from "@/lib/site";
 
@@ -114,6 +116,7 @@ const photos = {
   concert: "/waitlist-assets/wl-concert.jpg",
 };
 
+
 function getManifestoToneClass(tone: string) {
   return {
     coral: "manifesto-coral",
@@ -196,7 +199,7 @@ function PhotoCard({
 
   return (
     <div className={`relative ${className}`} style={{ transform: `rotate(${rotate}deg)` }}>
-      <div className={`photo-frame relative aspect-[4/5] overflow-hidden border-2 border-ink bg-paper ${shadowClass}`}>
+      <div className={`photo-frame relative aspect-4/5 overflow-hidden border-2 border-ink bg-paper ${shadowClass}`}>
         <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
       </div>
       <div
@@ -226,10 +229,11 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <AnalyticsTracker />
 
       <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
         <header className="glass sticky top-0 z-50">
-          <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between px-5 md:px-10">
+          <div className="mx-auto flex h-14 max-w-350 items-center justify-between px-5 md:px-10">
             <div className="flex items-center gap-2.5">
               <span className="relative flex size-2">
                 <span className="absolute inset-0 rounded-full bg-coral opacity-60 animate-ping" />
@@ -249,17 +253,21 @@ export default function HomePage() {
               </a>
             </nav>
 
-            <a
+            <CtaLink
               href="#join"
-              className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-1.5 text-sm font-medium !text-white transition hover:bg-ink/90"
+              ctaLocation="header"
+              className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-1.5 text-sm font-medium text-white! transition hover:bg-ink/90"
             >
               Rejoindre
               <span aria-hidden>→</span>
-            </a>
+            </CtaLink>
           </div>
         </header>
 
-        <section className="relative mx-auto max-w-[1400px] overflow-hidden px-5 pb-20 pt-14 md:px-10 md:pb-32 md:pt-24">
+        <section
+          className="relative mx-auto max-w-350 overflow-hidden px-5 pb-20 pt-14 md:px-10 md:pb-32 md:pt-24"
+          data-track-section="hero"
+        >
           <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
             <div className="blob bg-coral" style={{ width: 320, height: 320, top: "8%", left: "20%", animationDelay: "0s" }} />
             <div className="blob bg-sun" style={{ width: 280, height: 280, top: "55%", right: "15%", animationDelay: "-5s" }} />
@@ -335,16 +343,13 @@ export default function HomePage() {
                       <Image src={src} alt="" fill sizes="40px" className="object-cover" priority={index === 0} />
                     </div>
                   ))}
-                  <div className="grid size-10 place-items-center rounded-full border-2 border-ink bg-coral text-[10px] font-semibold text-ink">
-                    +284
-                  </div>
                 </div>
                 <div className="text-left">
                   <div className="font-display text-2xl leading-none tabular-nums">
-                    <span className="highlight-sun">2 847</span>
+                    <span className="highlight-sun">Pas de spam.</span>
                   </div>
                   <div className="mt-1 text-xs uppercase tracking-[0.18em] text-ink-soft">
-                    deja sur la liste
+                    Un seul email a l'ouvertures.
                   </div>
                 </div>
               </div>
@@ -406,11 +411,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="manifesto" className="mx-auto max-w-[1400px] scroll-mt-20 px-5 py-24 md:px-10 md:py-36">
+        <section
+          id="manifesto"
+          className="mx-auto max-w-350 scroll-mt-20 px-5 py-24 md:px-10 md:py-36"
+          data-track-section="manifesto"
+        >
           <div className="grid grid-cols-12 items-start gap-8 md:gap-12">
             <div className="col-span-12 min-w-0 md:col-span-5">
               <Sticker className="sticker-coral">Notre parti pris</Sticker>
-              <h2 className="mt-6 break-words font-display text-[clamp(2.15rem,8vw,4.75rem)] leading-[0.98] tracking-tight">
+              <h2 className="mt-6 wrap-break-word font-display text-[clamp(2.15rem,8vw,4.75rem)] leading-[0.98] tracking-tight">
                 On a perdu l&apos;habitude
                 <br />
                 de <span className="italic">sortir <span className="highlight-sun">pour de vrai</span></span>.
@@ -432,7 +441,7 @@ export default function HomePage() {
                     <span className={`size-2 rounded-full ${getDotToneClass(item.tone)}`} />
                     <div className="font-mono-tab text-xs text-ink-soft">{item.id}</div>
                   </div>
-                  <h3 className="mt-3 break-words font-display text-[1.35rem] leading-tight sm:text-2xl">
+                  <h3 className="mt-3 wrap-break-word font-display text-[1.35rem] leading-tight sm:text-2xl">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink-soft">
@@ -444,8 +453,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="perks" className="grain relative border-y-2 border-ink bg-paper-2 scroll-mt-20">
-          <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-5 py-20 md:px-10 md:py-28">
+        <section
+          id="perks"
+          className="grain relative border-y-2 border-ink bg-paper-2 scroll-mt-20"
+          data-track-section="perks"
+        >
+          <div className="mx-auto grid max-w-350 grid-cols-12 gap-8 px-5 py-20 md:px-10 md:py-28">
             <div className="col-span-12 hidden md:col-span-6 md:block">
               <Sticker className="sticker-sun">Liste d&apos;attente</Sticker>
               <h2 className="mt-6 font-display text-4xl leading-[0.95] md:text-6xl">
@@ -458,7 +471,7 @@ export default function HomePage() {
             <div className="col-span-12 md:hidden">
               <div className="border-2 border-ink bg-paper p-5 shadow-[4px_4px_0_hsl(var(--sun))]">
                 <Sticker className="sticker-sun">Liste d&apos;attente</Sticker>
-                <h2 className="mt-4 font-display text-[1.9rem] leading-[1]">
+                <h2 className="mt-4 font-display text-[1.9rem] leading-none">
                   Trois bonnes raisons
                   <br />
                   <span className="italic">d&apos;arriver <span className="highlight-coral">en avance</span>.</span>
@@ -482,8 +495,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1400px] px-3 py-20 sm:px-5 md:px-10 md:py-36">
-          <div className="relative overflow-hidden rounded-[1.75rem] bg-ink text-paper sm:rounded-[2rem] md:rounded-[3rem]">
+        <section
+          className="mx-auto max-w-350 px-3 py-20 sm:px-5 md:px-10 md:py-36"
+          data-track-section="final_cta"
+        >
+          <div className="relative overflow-hidden rounded-[1.75rem] bg-ink text-paper sm:rounded-4xl md:rounded-[3rem]">
             <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
               <div className="blob bg-coral" style={{ width: 320, height: 320, top: "-18%", left: "-12%", opacity: 0.4 }} />
               <div className="blob bg-grape" style={{ width: 260, height: 260, bottom: "-16%", right: "6%", opacity: 0.26, animationDelay: "-7s" }} />
@@ -502,18 +518,18 @@ export default function HomePage() {
 
             <div className="relative grid grid-cols-12 items-start gap-7 px-4 py-8 sm:px-6 sm:py-12 md:items-center md:gap-12 md:px-16 md:py-20">
               <div className="col-span-12 min-w-0 md:col-span-7">
-                <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-[1rem] border border-paper/15 bg-paper/10 px-3 py-1.5 text-left text-[11px] font-medium leading-snug text-paper/90 backdrop-blur sm:rounded-full sm:py-1 sm:text-xs">
+                <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-2xl border border-paper/15 bg-paper/10 px-3 py-1.5 text-left text-[11px] font-medium leading-snug text-paper/90 backdrop-blur sm:rounded-full sm:py-1 sm:text-xs">
                   <span className="size-1.5 rounded-full bg-coral" />
                   Plus que quelques places en acces anticipe
                 </div>
 
-                <h2 className="mt-5 break-words font-display text-[clamp(1.95rem,7.8vw,4.75rem)] leading-[1] tracking-[-0.02em] text-balance sm:mt-6">
+                <h2 className="mt-5 wrap-break-word font-display text-[clamp(1.95rem,7.8vw,4.75rem)] leading-none tracking-[-0.02em] text-balance sm:mt-6">
                   Sois la <span className="italic font-light">avant</span>
                   <br />
                   que ca commence.
                 </h2>
 
-                <p className="mt-4 max-w-[34rem] break-words text-[0.97rem] leading-8 text-paper/70 sm:mt-5 sm:text-base md:text-lg">
+                <p className="mt-4 max-w-136 wrap-break-word text-[0.97rem] leading-8 text-paper/70 sm:mt-5 sm:text-base md:text-lg">
                   Inscris ton email maintenant. Tu recois ton invitation des
                   l&apos;ouverture, ton badge fondateur, et un acces gratuit a vie
                   aux fonctionnalites premium.
@@ -527,7 +543,7 @@ export default function HomePage() {
               </div>
 
               <div className="col-span-12 min-w-0 md:col-span-5 md:pl-4">
-                <div className="rounded-[1.5rem] border border-paper/12 bg-paper/6 p-3 backdrop-blur-md sm:rounded-[1.75rem] sm:p-4 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
+                <div className="rounded-3xl border border-paper/12 bg-paper/6 p-3 backdrop-blur-md sm:rounded-[1.75rem] sm:p-4 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
                   <WaitlistForm variant="dark" buttonLabel="Reserver" />
                 </div>
               </div>
@@ -536,11 +552,11 @@ export default function HomePage() {
         </section>
 
         <footer className="mt-8">
-          <div className="mx-auto max-w-[1400px] px-3 sm:px-5 md:px-10">
-            <div className="overflow-hidden rounded-t-[1.75rem] bg-ink px-4 py-8 text-paper sm:px-6 sm:py-10 md:rounded-t-[2rem] md:px-12 md:py-16">
+          <div className="mx-auto max-w-350 px-3 sm:px-5 md:px-10">
+            <div className="overflow-hidden rounded-t-[1.75rem] bg-ink px-4 py-8 text-paper sm:px-6 sm:py-10 md:rounded-t-4xl md:px-12 md:py-16">
               <div className="grid grid-cols-12 gap-7 md:gap-10">
                 <div className="col-span-12 min-w-0 md:col-span-6">
-                  <div className="max-w-2xl break-words font-display text-[clamp(1.65rem,7vw,3.25rem)] leading-[1.08] tracking-[-0.02em]">
+                  <div className="max-w-2xl wrap-break-word font-display text-[clamp(1.65rem,7vw,3.25rem)] leading-[1.08] tracking-[-0.02em]">
                     Construit pour <span className="italic text-coral">celles et ceux</span> qui veulent vraiment y etre.
                   </div>
                   <p className="mt-4 max-w-md text-[0.95rem] leading-7 text-paper/55 sm:text-sm">
@@ -554,7 +570,15 @@ export default function HomePage() {
                   <ul className="grid gap-3 text-[0.98rem] sm:grid-cols-3 sm:gap-4 sm:text-sm md:grid-cols-1">
                     <li><a href="#manifesto" className="text-paper/80 transition hover:text-paper">Manifeste</a></li>
                     <li><a href="#perks" className="text-paper/80 transition hover:text-paper">Avantages</a></li>
-                    <li><a href="#join" className="text-paper/80 transition hover:text-paper">Rejoindre</a></li>
+                    <li>
+                      <CtaLink
+                        href="#join"
+                        ctaLocation="footer"
+                        className="text-paper/80 transition hover:text-paper"
+                      >
+                        Rejoindre
+                      </CtaLink>
+                    </li>
                   </ul>
                 </div>
               </div>

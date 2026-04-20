@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { pushDataLayerEvent } from "@/lib/gtm";
+
 type SubmitState = "idle" | "loading" | "success" | "error";
 
 export function WaitlistForm({
@@ -41,12 +43,24 @@ export function WaitlistForm({
 
       setStatus("success");
       setEmail("");
+      pushDataLayerEvent({
+        event: "waitlist_signup_success",
+        conversion_type: "waitlist",
+        email_domain: email.split("@")[1] || "unknown",
+      });
+      pushDataLayerEvent({
+        event: "generate_lead",
+        lead_type: "waitlist",
+      });
       setMessage(
         payload.message ||
           "Tu es dedans. Franchement, c'etait un excellent move."
       );
     } catch (error) {
       setStatus("error");
+      pushDataLayerEvent({
+        event: "waitlist_signup_error",
+      });
       setMessage(
         error instanceof Error
           ? error.message
