@@ -10,7 +10,7 @@ import { siteName, siteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Liste d'attente 2026 | Les vrais moments se vivent ensemble",
   description:
-    "Rejoins la liste d'attente d'une plateforme independante pour decouvrir et vivre les evenements qui comptent, sans pub et sans commission.",
+    "Rejoins la liste d'attente d'une plateforme indépendante pour découvrir et vivre les événements qui comptent, sans pub et sans commission.",
   alternates: {
     canonical: "/",
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Liste d'attente 2026",
     description:
-      "Une plateforme independante pour celles et ceux qui veulent vraiment y etre.",
+      "Une plateforme indépendante pour celles et ceux qui veulent vraiment y être.",
     images: [`${siteUrl}/waitlist-assets/hero.png`],
   },
   keywords: [
@@ -50,10 +50,10 @@ export const metadata: Metadata = {
 const marqueeItems = [
   "Concerts",
   "Ateliers",
-  "Conferences",
-  "Soirees",
+  "Conférences",
+  "Soirées",
   "Sport",
-  "Marches",
+  "Marchés",
   "Lectures",
   "Expos",
   "Festivals",
@@ -63,9 +63,9 @@ const marqueeItems = [
 const manifestoItems = [
   {
     id: "01",
-    title: "Trouve ce qui se passe pres de toi.",
+    title: "Trouve ce qui se passe près de toi.",
     description:
-      "Sans algorithme louche. Sans frais caches. Juste ce qui compte, a 2 km ou a l'autre bout du monde.",
+      "Sans algorithme louche. Sans frais cachés. Juste ce qui compte, à 2 km ou à l'autre bout du monde.",
     tone: "coral",
   },
   {
@@ -77,24 +77,24 @@ const manifestoItems = [
   },
   {
     id: "03",
-    title: "Une communaute autour de chaque event.",
+    title: "Une communauté autour de chaque event.",
     description:
-      "Avant, pendant, apres. Le mur reste vivant et tes souvenirs aussi.",
+      "Avant, pendant, après. Le mur reste vivant et tes souvenirs aussi.",
     tone: "grape",
   },
   {
     id: "04",
     title: "Organise sans payer de commission.",
     description:
-      "Cree ton atelier, ton concert, ton meetup. C'est gratuit. Pour de vrai.",
+      "Crée ton atelier, ton concert, ton meetup. C'est gratuit. Pour de vrai.",
     tone: "leaf",
   },
 ];
 
 const perks = [
   {
-    title: "Acces anticipe",
-    description: "Tu recois ton invitation avant l'ouverture publique.",
+    title: "Accès anticipé",
+    description: "Tu reçois ton invitation avant l'ouverture publique.",
     tone: "coral",
   },
   {
@@ -104,7 +104,7 @@ const perks = [
   },
   {
     title: "Voix au chapitre",
-    description: "On construit avec vous. Tes retours faconnent les premieres versions.",
+    description: "On construit avec vous. Tes retours façonnent les premières versions.",
     tone: "grape",
   },
 ];
@@ -220,7 +220,7 @@ export default function HomePage() {
     url: siteUrl,
     inLanguage: "fr",
     description:
-      "Plateforme independante pour decouvrir, vivre et garder en memoire les evenements qui comptent.",
+      "Plateforme indépendante pour découvrir, vivre et garder en mémoire les événements qui comptent.",
   };
 
   return (
@@ -278,7 +278,7 @@ export default function HomePage() {
             <div className="col-span-12 hidden flex-col gap-12 pt-10 md:col-span-3 md:flex">
               <PhotoCard
                 src={photos.crowd}
-                alt="Trois amis riant ensemble lors d'un evenement"
+                alt="Trois amis riant ensemble lors d'un événement"
                 caption="vendredi soir."
                 rotate={-3}
                 shadow="coral"
@@ -298,7 +298,7 @@ export default function HomePage() {
 
             <div className="col-span-12 min-w-0 text-center md:col-span-6">
               <div className="mb-8 flex justify-center gap-2">
-                <Sticker variant="outline">Acces anticipe</Sticker>
+                <Sticker variant="outline">Accès anticipé</Sticker>
                 <Sticker className="sticker-coral">2026</Sticker>
               </div>
 
@@ -327,12 +327,12 @@ export default function HomePage() {
               </h1>
 
               <p className="mx-auto mt-10 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft md:text-xl">
-                Une nouvelle facon de decouvrir, vivre et garder en memoire les
-                evenements qui comptent. Sans algorithme opaque. Sans commission.
-                Juste les gens, les lieux, et l&apos;envie d&apos;y etre.
+                Une nouvelle façon de découvrir, vivre et garder en mémoire les
+                événements qui comptent. Sans algorithme opaque. Sans commission.
+                Juste les gens, les lieux, et l&apos;envie d&apos;y être.
               </p>
 
-              <div id="join" className="mx-auto mt-10 max-w-lg">
+              <div className="mx-auto mt-10 max-w-lg">
                 <WaitlistForm />
               </div>
 
@@ -349,7 +349,7 @@ export default function HomePage() {
                     <span className="highlight-sun">Pas de spam.</span>
                   </div>
                   <div className="mt-1 text-xs uppercase tracking-[0.18em] text-ink-soft">
-                    Un seul email a l'ouvertures.
+                    Un seul email à l'ouverture.
                   </div>
                 </div>
               </div>
@@ -369,7 +369,7 @@ export default function HomePage() {
               <PhotoCard
                 src={photos.concert}
                 alt="Concert vu depuis la foule"
-                caption="ce soir · a 2 km"
+                caption="ce soir · à 2 km"
                 rotate={-2}
                 stickerPos="-bottom-3 -right-3"
                 stickerRotate={4}
@@ -425,9 +425,9 @@ export default function HomePage() {
                 de <span className="italic">sortir <span className="highlight-sun">pour de vrai</span></span>.
               </h2>
               <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
-                Pas par manque d&apos;envie. Par exces d&apos;ecrans, d&apos;invitations
-                fantomes et de pages d&apos;evenements qui s&apos;evaporent une fois la
-                soiree terminee.
+                Pas par manque d&apos;envie. Par excès d&apos;écrans, d&apos;invitations
+                fantômes et de pages d&apos;événements qui s&apos;évaporent une fois la
+                soirée terminée.
               </p>
             </div>
 
@@ -496,7 +496,7 @@ export default function HomePage() {
         </section>
 
         <section
-          className="mx-auto max-w-350 px-3 py-20 sm:px-5 md:px-10 md:py-36"
+          className="mx-auto max-w-350 px-3 py-20 sm:px-5 md:px-10 md:py-36" id="join" 
           data-track-section="final_cta"
         >
           <div className="relative overflow-hidden rounded-[1.75rem] bg-ink text-paper sm:rounded-4xl md:rounded-[3rem]">
@@ -520,31 +520,31 @@ export default function HomePage() {
               <div className="col-span-12 min-w-0 md:col-span-7">
                 <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-2xl border border-paper/15 bg-paper/10 px-3 py-1.5 text-left text-[11px] font-medium leading-snug text-paper/90 backdrop-blur sm:rounded-full sm:py-1 sm:text-xs">
                   <span className="size-1.5 rounded-full bg-coral" />
-                  Plus que quelques places en acces anticipe
+                  Plus que quelques places en accès anticipé
                 </div>
 
                 <h2 className="mt-5 wrap-break-word font-display text-[clamp(1.95rem,7.8vw,4.75rem)] leading-none tracking-[-0.02em] text-balance sm:mt-6">
                   Sois la <span className="italic font-light">avant</span>
                   <br />
-                  que ca commence.
+                  que ça commence.
                 </h2>
 
                 <p className="mt-4 max-w-136 wrap-break-word text-[0.97rem] leading-8 text-paper/70 sm:mt-5 sm:text-base md:text-lg">
-                  Inscris ton email maintenant. Tu recois ton invitation des
-                  l&apos;ouverture, ton badge fondateur, et un acces gratuit a vie
-                  aux fonctionnalites premium.
+                  Inscris ton email maintenant. Tu reçois ton invitation dès
+                  l&apos;ouverture, ton badge fondateur, et un accès gratuit à vie
+                  aux fonctionnalités premium.
                 </p>
 
                 <div className="mt-6 grid gap-3 text-sm text-paper/65 sm:mt-8 sm:flex sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3 sm:text-xs">
                   <div className="flex items-center gap-2 leading-relaxed">✓ Aucune carte requise</div>
-                  <div className="flex items-center gap-2 leading-relaxed">✓ Desinscription en 1 clic</div>
-                  <div className="flex items-center gap-2 leading-relaxed">✓ Donnees jamais revendues</div>
+                  <div className="flex items-center gap-2 leading-relaxed">✓ Désinscription en 1 clic</div>
+                  <div className="flex items-center gap-2 leading-relaxed">✓ Données jamais revendues</div>
                 </div>
               </div>
 
               <div className="col-span-12 min-w-0 md:col-span-5 md:pl-4">
                 <div className="rounded-3xl border border-paper/12 bg-paper/6 p-3 backdrop-blur-md sm:rounded-[1.75rem] sm:p-4 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
-                  <WaitlistForm variant="dark" buttonLabel="Reserver" />
+                  <WaitlistForm variant="dark" buttonLabel="Réserver" />
                 </div>
               </div>
             </div>
@@ -557,11 +557,11 @@ export default function HomePage() {
               <div className="grid grid-cols-12 gap-7 md:gap-10">
                 <div className="col-span-12 min-w-0 md:col-span-6">
                   <div className="max-w-2xl wrap-break-word font-display text-[clamp(1.65rem,7vw,3.25rem)] leading-[1.08] tracking-[-0.02em]">
-                    Construit pour <span className="italic text-coral">celles et ceux</span> qui veulent vraiment y etre.
+                    Construit pour <span className="italic text-coral">celles et ceux</span> qui veulent vraiment y être.
                   </div>
                   <p className="mt-4 max-w-md text-[0.95rem] leading-7 text-paper/55 sm:text-sm">
-                    Une plateforme independante, sans pub, sans commission. En
-                    preparation pour l&apos;ete 2026.
+                    Une plateforme indépendante, sans pub, sans commission. En
+                    préparation pour l&apos;été 2026.
                   </p>
                 </div>
 
@@ -589,8 +589,8 @@ export default function HomePage() {
                   <span>© 2026 — fait avec soin.</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-4 sm:gap-5">
-                  <a href="#" className="transition hover:text-paper/80">Confidentialite</a>
-                  <a href="#" className="transition hover:text-paper/80">Mentions legales</a>
+                  <a href="#" className="transition hover:text-paper/80">Confidentialité</a>
+                  <a href="#" className="transition hover:text-paper/80">Mentions légales</a>
                 </div>
               </div>
             </div>
