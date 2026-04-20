@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/waitlist-assets/hero.png",
+        url: `${siteUrl}/waitlist-assets/hero.png`,
         width: 1200,
         height: 630,
         alt: "Waitlist 2026 - les vrais moments se vivent ensemble",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Liste d'attente 2026",
     description:
       "Une plateforme independante pour celles et ceux qui veulent vraiment y etre.",
-    images: ["/waitlist-assets/hero.png"],
+    images: [`${siteUrl}/waitlist-assets/hero.png`],
   },
   keywords: [
     "waitlist nextjs",
