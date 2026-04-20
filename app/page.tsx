@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Liste d'attente 2026 | Les vrais moments se vivent ensemble",
     description:
-      "Inscription a la waitlist avec confirmation email via Next.js, Supabase et Resend.",
+      "Rejoignez le mouvement pour une nouvelle façon de vivre les événements. Inscrivez-vous pour obtenir votre accès prioritaire.",
     url: siteUrl,
-    siteName,
+    siteName: "Waitlist 2026",
     locale: "fr_FR",
     type: "website",
     images: [
